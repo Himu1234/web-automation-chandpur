@@ -1,0 +1,25 @@
+wb=openpyxl.load_workbook("Site_list.xlsx")
+print("Site_llist excel file loaded")
+ws=wb.worksheets[0]
+site_count=ws.max_row-1
+print("Site Count is %d" %site_count)
+
+site_id_list=[]
+mrbts_id_list=[]
+site_ip_list=[]
+site_config_list=[]
+
+for i in range(2,site_count+2):
+    site_id_list.append(ws["A" + str(i)].value)
+    mrbts_id_list.append(ws["B" + str(i)].value)
+    site_ip_list.append(ws["C" + str(i)].value)
+    site_config_list.append(ws["D" +str(i)].value)
+
+print("Site ID:")
+print(site_id_list)
+print("MRBTS ID:")
+print(mrbts_id_list)
+print("Site IP:")
+print(site_ip_list)
+print("Site Configuration:")
+print(site_config_list)
