@@ -51,12 +51,12 @@ for x in range(max_consumers):
     browser.switch_to.frame(browser.find_element_by_id('mainFrame2'))
     browser.find_element_by_xpath('/html/body/table/tbody/tr/td[2]/form/div[2]/table/tbody/tr/td[7]/button').click()
     sleep(2)
-    date = browser.find_element_by_xpath('/html/body/table/tbody/tr/td[2]/form/div[3]/div/div[2]/div[1]/div/div[2]/div[2]/div/div[1]/table/tbody/tr/td[4]/div').text
-    ws1.cell(row = 1+x, column = 2).value = date
+    dateTime = browser.find_element_by_xpath('/html/body/table/tbody/tr/td[2]/form/div[3]/div/div[2]/div[1]/div/div[2]/div[2]/div/div[1]/table/tbody/tr/td[4]/div').text
+    ws1.cell(row = 1+x, column = 3).value = dateTime
     tokenType = browser.find_element_by_xpath('/html/body/table/tbody/tr/td[2]/form/div[3]/div/div[2]/div[1]/div/div[2]/div[2]/div/div[1]/table/tbody/tr/td[5]/div').text
-    ws1.cell(row = 1+x, column = 3).value = tokenType
+    ws1.cell(row = 1+x, column = 4).value = tokenType
     totalPurchase = browser.find_element_by_xpath('/html/body/table/tbody/tr/td[2]/form/div[3]/div/div[2]/div[2]/div/table/tbody/tr/td[2]/table/tbody/tr/td[1]/table/tbody/tr/td/div').text 
-    ws1.cell(row = 1+x, column = 4).value = totalPurchase
+    ws1.cell(row = 1+x, column = 5).value = totalPurchase
     wb.save(os.path.join(os.getcwd(),excel_file))
     print("Ends: ", x+1)
     browser.refresh()
