@@ -14,13 +14,13 @@ browser = webdriver.Chrome(executable_path=os.path.join(os.getcwd(), driver_exe)
 browser.get('http://119.40.95.163/Admin')
 browser.implicitly_wait(100)
 browser.find_element_by_xpath('/html/body/div/login/form/md-card/md-card-content/md-input-container[1]/input').send_keys('ae1c6')
-browser.find_element_by_xpath('/html/body/div/login/form/md-card/md-card-content/md-input-container[2]/input').send_keys('010203')
+browser.find_element_by_xpath('/html/body/div/login/form/md-card/md-card-content/md-input-container[2]/input').send_keys('c6_new_connection')
 browser.find_element_by_xpath('/html/body/div/login/form/md-card/md-card-actions/button[1]').click()
 browser.implicitly_wait(100)
 browser.maximize_window()
 sleep(2)
 
-for x in range(100):
+for x in range(500):
 
     browser.get('http://119.40.95.163/Census/CensusVerifyByAe')
     browser.implicitly_wait(100)

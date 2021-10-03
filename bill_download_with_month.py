@@ -33,10 +33,11 @@ print(max_consumers)
 
 browser = webdriver.Chrome(executable_path=os.path.join(os.getcwd(), driver_exe))
 count = 0
+current_year = 21 # Last two digits of the current year. 
 
 for x in range(max_consumers - 1):
     
-    clicks = 21-int(ws1.cell(row = 2+x, column = 2).value[4:6])
+    clicks = current_year-int(ws1.cell(row = 2+x, column = 2).value[4:6]) 
     print("No of Clicks Required : ", clicks)
     print("Month : ", ws1.cell(row = 2+x, column = 2).value[0:3])
     xpath = '/html/body/div/div[2]/table/tbody/tr/td/span[{}]'.format(dict[ws1.cell(row = 2+x, column = 2).value[0:3]])

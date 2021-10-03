@@ -21,6 +21,7 @@ for x in range(max_consumers-1):
 
     browser.get("http://119.40.95.162:8991/Pages/User/ConsumerInfo.aspx")
     browser.implicitly_wait(100) #implicit wait
+    browser.maximize_window()
 
     x1 = browser.find_element_by_id("cphMain_txtConsumer")
     cnum = ws1.cell(row = 2+x, column = 1).value
@@ -34,14 +35,17 @@ for x in range(max_consumers-1):
     td = browser.find_elements_by_tag_name('td')
     ws1.cell(row = 2+x, column = 2).value = td[1].text
     ws1.cell(row = 2+x, column = 3).value = td[5].text
-    ws1.cell(row = 2+x, column = 4).value = td[15].text
-    ws1.cell(row = 2+x, column = 5).value = td[17].text
-    ws1.cell(row = 2+x, column = 6).value = td[19].text
-    ws1.cell(row = 2+x, column = 7).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]').text
-    ws1.cell(row = 2+x, column = 8).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[2]').text
-    ws1.cell(row = 2+x, column = 9).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[3]').text
-    ws1.cell(row = 2+x, column = 10).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[13]').text
-    print(cnum, "    ", td[1].text, "    ", td[5].text, "    ", td[15].text, "    ", td[17].text)
+    ws1.cell(row = 2+x, column = 4).value = td[13].text
+    ws1.cell(row = 2+x, column = 5).value = td[15].text
+    ws1.cell(row = 2+x, column = 6).value = td[17].text
+    ws1.cell(row = 2+x, column = 7).value = td[19].text
+    ws1.cell(row = 2+x, column = 8).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]').text
+    ws1.cell(row = 2+x, column = 9).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[2]').text
+    ws1.cell(row = 2+x, column = 10).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[3]').text
+    ws1.cell(row = 2+x, column = 11).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[13]').text
+    ws1.cell(row = 2+x, column = 12).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[12]').text
+    ws1.cell(row = 2+x, column = 13).value = browser.find_element_by_xpath('/html/body/form/div[4]/div/div[2]/div/div/div/div/div/div/div[3]/div/div/div/div/div[2]/div/table/tbody/tr[1]/td[11]').text
+    print(cnum, "    ", td[1].text, "Address:    ", td[5].text, " Bill Group:   ", td[13].text, "Book No:    ", td[15].text)
     wb.save(os.path.join(os.getcwd(),excel_file))
     
 wb.save(os.path.join(os.getcwd(),excel_file))
