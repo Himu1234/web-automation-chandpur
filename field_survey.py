@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait # Required for explicit 
 from selenium.webdriver.support import expected_conditions as ec # Required for explicit wait
 from selenium.webdriver.common.by import By # Required for explicit wait
 
-excel_file = 'saiful.xlsx'
+excel_file = 'atik.xlsx'
 wb = load_workbook(filename = os.path.join(os.getcwd(),excel_file), read_only = False)
 sheet = wb.sheetnames
 ws1 = wb[sheet[0]]
@@ -19,16 +19,21 @@ print(max_consumers)
 driver_exe = 'chromedriver.exe'
 browser = webdriver.Chrome(executable_path=os.path.join(os.getcwd(), driver_exe))
 
+# sleep(100)
+
 browser.get("http://119.40.95.163/Admin/Login")
 browser.implicitly_wait(100)
 browser.find_element_by_xpath('/html/body/div/login/form/md-card/md-card-content/md-input-container[1]/input').send_keys('ae1c6')
+browser.implicitly_wait(100)
 browser.find_element_by_xpath('/html/body/div/login/form/md-card/md-card-content/md-input-container[2]/input').send_keys('c6_new_connection')
+browser.implicitly_wait(100)
 browser.find_element_by_xpath('/html/body/div/login/form/md-card/md-card-actions/button[1]').click()
 browser.implicitly_wait(100)
 browser.maximize_window()
 
 for x in range(max_consumers):
 
+    browser.implicitly_wait(100)
     browser.get('http://119.40.95.163/FieldSurveyApprove/Index')
     browser.implicitly_wait(100)
     # print('hlw')

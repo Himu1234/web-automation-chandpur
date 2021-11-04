@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait # Required for explicit 
 from selenium.webdriver.support import expected_conditions as ec # Required for explicit wait
 from selenium.webdriver.common.by import By # Required for explicit wait
 
-excel_file = 'ht_consumers_info.xlsx'
+excel_file = 'Closed_Consumers.xlsx'
 driver_exe = 'chromedriver.exe'
 wb = load_workbook(filename = os.path.join(os.getcwd(), excel_file), read_only = False)
 sheet = wb.sheetnames
