@@ -16,8 +16,8 @@ wb = load_workbook(filename = os.path.join(os.getcwd(), excel_file), read_only =
 sheet = wb.sheetnames
 ws1 = wb[sheet[0]]
 max_consumers = ws1.max_row
-indent = 127
-print(max_consumers - indent + 1)
+indent = 8 #faulty iteration
+print(max_consumers - indent)
 
 browser = webdriver.Chrome(executable_path = os.path.join(os.getcwd(), driver_exe))
 browser.get("http://172.16.15.18/prepay/login!init.do")
@@ -30,7 +30,7 @@ x2.send_keys("C6_029_Prepaid")
 x3 = browser.find_element_by_xpath("//input[@type='button']")
 x3.click()
 
-for x in range(max_consumers - indent + 1):
+for x in range(max_consumers - indent):
     # meterNo = ws1.cell(row = 1+x, column = 1).value
     browser.find_elements_by_xpath('/html/body/div[1]/div/div/div[1]/div/div/div/div[3]/div/table/tbody/tr/td[1]/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/em/button')[0].click()
     browser.find_elements_by_xpath('/html/body/div[6]/ul/li[1]/a/span')[0].click()
