@@ -16,7 +16,7 @@ wb = load_workbook(filename = os.path.join(os.getcwd(), excel_file), read_only =
 sheet = wb.sheetnames
 ws1 = wb[sheet[0]]
 max_consumers = ws1.max_row
-indent = 8 #faulty iteration
+indent = 0 #faulty iteration
 print(max_consumers - indent)
 
 browser = webdriver.Chrome(executable_path = os.path.join(os.getcwd(), driver_exe))
