@@ -16,7 +16,14 @@ wb = load_workbook(filename = os.path.join(os.getcwd(),excel_file), read_only = 
 sheet = wb.sheetnames
 ws1 = wb[sheet[2]]
 max_consumers = ws1.max_row
-print(max_consumers)
+
+########################################################
+########################################################
+indent = 0 #Last valid iteration; Must check before each run
+########################################################
+########################################################
+
+print(max_consumers-indent)
 
 browser = webdriver.Chrome(executable_path = os.path.join(os.getcwd(), driver_exe))
 
@@ -33,7 +40,7 @@ x3.click()
 print('Hello')
 sleep(5)
 
-for x in range(max_consumers):
+for x in range(max_consumers-indent):
 
     browser.implicitly_wait(100)
     browser.get('http://172.16.15.18/prepay/prepay/mgtCode/codeMgt!ctc.do?timestamp=NaN&menuid=63100&menupath=Clear%20Tamper%20Status&curTabId=63100')  
@@ -41,7 +48,7 @@ for x in range(max_consumers):
     generateBtn = browser.find_elements_by_class_name('ext_btn')[0]
     browser.switch_to.frame(browser.find_element_by_id('accountQueryIframe'))
     browser.implicitly_wait(100)
-    meterNo = ws1.cell(row = 1+x, column = 1).value
+    meterNo = ws1.cell(row = indent+1+x, column = 1).value
     print("Meter No: ", meterNo)
     browser.find_element(By.ID, "metNo").send_keys(meterNo)
     # print('1')
@@ -61,11 +68,11 @@ for x in range(max_consumers):
     print("Token: ", serial)
     sequence = browser.find_element_by_xpath('/html/body/table/tbody/tr[1]/td/table/tbody/tr[11]').text
     print("Sequence: ", sequence[10:len(sequence)])
-    ws1.cell(row = 1+x, column = 3).value = sequence[10:len(sequence)]
-    ws1.cell(row = 1+x, column = 4).value = serial
+    ws1.cell(row = indent+1+x, column = 3).value = sequence[10:len(sequence)]
+    ws1.cell(row = indent+1+x, column = 4).value = serial
 
 
-    ws1.cell(row = 1+x, column = 5).value = 'Done'
+    ws1.cell(row = indent+1+x, column = 5).value = 'Done'
     wb.save(os.path.join(os.getcwd(),excel_file))
     print('Ends : ', x+1)
 
