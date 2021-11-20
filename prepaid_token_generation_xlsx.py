@@ -46,6 +46,8 @@ for x in range(max_consumers-indent):
     browser.get('http://172.16.15.18/prepay/prepay/mgtCode/codeMgt!ctc.do?timestamp=NaN&menuid=63100&menupath=Clear%20Tamper%20Status&curTabId=63100')  
     browser.implicitly_wait(100)
     generateBtn = browser.find_elements_by_class_name('ext_btn')[0]
+    selectBtn = browser.find_element_by_xpath('/html/body/table/tbody/tr/td[2]/form/table/tbody/tr[2]/td[2]/select')
+    selectOptn = browser.find_element_by_xpath('/html/body/table/tbody/tr/td[2]/form/table/tbody/tr[2]/td[2]/select/option[2]')
     browser.switch_to.frame(browser.find_element_by_id('accountQueryIframe'))
     browser.implicitly_wait(100)
     meterNo = ws1.cell(row = indent+1+x, column = 1).value
@@ -57,6 +59,10 @@ for x in range(max_consumers-indent):
     # print('2')
     browser.switch_to_default_content()
     sleep(2)
+    selectOptn.click()
+    browser.implicitly_wait(100)
+    selectBtn.click()
+    browser.implicitly_wait(100)
     generateBtn.click()
     browser.implicitly_wait(100)
     browser.find_element_by_xpath('/html/body/div[7]/div[2]/div[2]/div/div/div/div[1]/table/tbody/tr/td[1]/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/em/button').click()
