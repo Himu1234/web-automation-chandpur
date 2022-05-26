@@ -1,6 +1,5 @@
 /.vscode
 /__pycache__
-*.xlsx
 *.log
 *.xls
 *.exe
