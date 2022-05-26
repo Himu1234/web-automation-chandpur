@@ -33,7 +33,7 @@ max_consumers = ws1.max_row - 1
 
 browser = webdriver.Chrome(executable_path=os.path.join(os.getcwd(), driver_exe))
 count = 0
-current_year = 21 # Last two digits of the current year. 
+current_year = 22 # Last two digits of the current year. 
 indent = 0 # Must check before each run
 print(max_consumers-indent)
 
